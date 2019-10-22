@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://nbconvert.readthedocs.io/en/latest/usage.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using as a command line tool — nbconvert 5.6.1.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script async="" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/analytics.js"></script><script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/documentation_options.js"></script>
+        <script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/jquery.js"></script>
+        <script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/underscore.js"></script>
+        <script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/doctools.js"></script>
+        <script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/language_data.js"></script>
+        <script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/readthedocs-doc-embed.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/require.min.js"></script>
+        <script async="async" type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/latest.js"></script>
+        <script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://nbconvert.readthedocs.io/en/latest/genindex.html">
+    <link rel="search" title="Search" href="https://nbconvert.readthedocs.io/en/latest/search.html">
+    <link rel="next" title="Using nbconvert as a library" href="https://nbconvert.readthedocs.io/en/latest/nbconvert_library.html">
+    <link rel="prev" title="Installation" href="https://nbconvert.readthedocs.io/en/latest/install.html"> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="https://nbconvert.readthedocs.io/en/latest/usage.html">
+
+<link rel="stylesheet" href="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "usage"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/readthedocs-analytics.js"></script>
+
+<!-- end RTD <extrahead> -->
+<script type="text/javascript" async="" src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body class="wy-body-for-nav"><div id="MathJax_Message" style="display: none;"></div>
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://nbconvert.readthedocs.io/en/latest/index.html" class="icon icon-home"> nbconvert
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://nbconvert.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="https://nbconvert.readthedocs.io/en/latest/usage.html#"><span class="toctree-expand"></span>Using as a command line tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#default-output-format-html">Default output format - HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#supported-output-formats"><span class="toctree-expand"></span>Supported output formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#html">HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#latex">LaTeX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#pdf">PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#reveal-js-html-slideshow"><span class="toctree-expand"></span>Reveal.js HTML slideshow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#example-creating-slides-w-speaker-notes">Example: creating slides w/ speaker notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#serving-slides-with-an-https-server-post-serve">Serving slides with an https server: <code class="docutils literal notranslate"><span class="pre">--post</span> <span class="pre">serve</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#markdown">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#ascii">Ascii</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#restructuredtext">reStructuredText</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#executable-script">Executable script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#notebook-and-preprocessors">Notebook and preprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#converting-multiple-notebooks">Converting multiple notebooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/nbconvert_library.html">Using nbconvert as a library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/latex_citations.html">LaTeX citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/removing_cells.html">Removing cells, inputs, or outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/execute_api.html">Executing notebooks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/config_options.html">Configuration options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/customizing.html">Customizing nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/external_exporters.html">Customizing exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/external_exporters.html#parameters-controlled-by-an-external-exporter">Parameters controlled by an external exporter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/external_exporters.html#writing-a-custom-exporter">Writing a custom <code class="docutils literal notranslate"><span class="pre">Exporter</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/highlighting.html">Customizing Syntax Highlighting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/architecture.html">Architecture of nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/api/index.html">Python API for working with nbconvert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/development_release.html">Making an <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> release</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About nbconvert</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/changelog.html">Changes in nbconvert</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Questions? Suggestions?</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/forum/#!forum/jupyter">Jupyter mailing list</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyter.org/">Jupyter website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter">Stack Overflow - Jupyter</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://stackoverflow.com/questions/tagged/jupyter-notebook">Stack Overflow - Jupyter-notebook</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div id="rtd-pzfe3dsn" class="ethical-rtd ethical-dark-theme"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://readthedocs.org/sustainability/click/472/6NJqzcnq6Pq5/" rel="nofollow" target="_blank" class="ethical-image-link"><img src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/house-hiredevs-03.png"></a><div class="ethical-text"><a href="https://readthedocs.org/sustainability/click/472/6NJqzcnq6Pq5/" rel="nofollow" target="_blank">Hiring Python devs?<br>
+Read the Docs can help!</a></div></div><div class="ethical-callout"><small><em><a href="https://readthedocs.org/sustainability/advertising/">Sponsored</a><span> · </span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html">Ads served ethically</a></em></small></div></div><img src="./Using as a command line tool — nbconvert 5.6.1.dev0 documentation_files/saved_resource" style="display: none;"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://nbconvert.readthedocs.io/en/latest/index.html">nbconvert</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://nbconvert.readthedocs.io/en/latest/index.html">Docs</a> »</li>
+        
+      <li>Using as a command line tool</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/jupyter/nbconvert/blob/master/docs/source/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="using-as-a-command-line-tool">
+<h1>Using as a command line tool<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#using-as-a-command-line-tool" title="Permalink to this headline">¶</a></h1>
+<p>The command-line syntax to run the <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> script is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert --to FORMAT notebook.ipynb
+</pre></div>
+</div>
+<p>This will convert the Jupyter notebook file <code class="docutils literal notranslate"><span class="pre">notebook.ipynb</span></code> into the output
+format given by the <code class="docutils literal notranslate"><span class="pre">FORMAT</span></code> string.</p>
+<div class="section" id="default-output-format-html">
+<h2>Default output format - HTML<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#default-output-format-html" title="Permalink to this headline">¶</a></h2>
+<p>The default output format is HTML, for which the <code class="docutils literal notranslate"><span class="pre">--to</span></code> argument may be
+omitted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert notebook.ipynb
+</pre></div>
+</div>
+</div>
+<div class="section" id="supported-output-formats">
+<span id="supported-output"></span><h2>Supported output formats<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#supported-output-formats" title="Permalink to this headline">¶</a></h2>
+<p>The currently supported output formats are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-html"><span class="std std-ref">HTML</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-latex"><span class="std std-ref">LaTeX</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-pdf"><span class="std std-ref">PDF</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-revealjs"><span class="std std-ref">Reveal.js HTML slideshow</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-markdown"><span class="std std-ref">Markdown</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-ascii"><span class="std std-ref">Ascii</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-rst"><span class="std std-ref">reStructuredText</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-script"><span class="std std-ref">executable script</span></a>,</p></li>
+<li><p><a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#convert-notebook"><span class="std std-ref">notebook</span></a>.</p></li>
+</ul>
+</div></blockquote>
+<p>Jupyter also provides a few templates for output formats. These can be
+specified via an additional <code class="docutils literal notranslate"><span class="pre">--template</span></code> argument and are listed in the
+sections below.</p>
+<div class="section" id="html">
+<span id="convert-html"></span><h3>HTML<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#html" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">html</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--template</span> <span class="pre">full</span></code> (default)</p>
+<p>A full static HTML render of the notebook.
+This looks very similar to the interactive view.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--template</span> <span class="pre">basic</span></code></p>
+<p>Simplified HTML, useful for embedding in webpages, blogs, etc.
+This excludes HTML headers.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="latex">
+<span id="convert-latex"></span><h3>LaTeX<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#latex" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">latex</span></code></p>
+<p>Latex export.  This generates <code class="docutils literal notranslate"><span class="pre">NOTEBOOK_NAME.tex</span></code> file,
+ready for export.
+Images are output as .png files in a folder.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--template</span> <span class="pre">article</span></code> (default)</p>
+<p>Latex article, derived from Sphinx’s howto template.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--template</span> <span class="pre">report</span></code></p>
+<p>Latex report, providing a table of contents and chapters.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>nbconvert uses <a class="reference external" href="http://pandoc.org/">pandoc</a> to convert between various markup languages,
+so pandoc is a dependency when converting to latex or reStructuredText.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="pdf">
+<span id="convert-pdf"></span><h3>PDF<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#pdf" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">pdf</span></code></p>
+<p>Generates a PDF via latex. Supports the same templates as <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">latex</span></code>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="reveal-js-html-slideshow">
+<span id="convert-revealjs"></span><h3>Reveal.js HTML slideshow<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#reveal-js-html-slideshow" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">slides</span></code></p>
+<p>This generates a Reveal.js HTML slideshow.</p>
+</li>
+</ul>
+<p>Running this slideshow requires a copy of reveal.js (version 3.x).</p>
+<p>By default, this will include a script tag in the html that will directly load
+reveal.js from a public CDN.</p>
+<p>This means that if you include your slides on a webpage, they should work as
+expected. However, some features (specifically, speaker notes &amp; timers) will not
+work on website because they require access to a local copy of reveal.js.</p>
+<p>Speaker notes require a local copy of reveal.js. Then, you need to tell
+<code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> how to find that local copy.</p>
+<p>Timers only work if you already have speaker notes, but also require a local
+https server. You can read more about this in <a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#servepostprocessorexample">ServePostProcessorExample</a>.</p>
+<p>To make this clearer, let’s look at an example of how to get speaker notes
+working with a local copy of reveal.js: <a class="reference internal" href="https://nbconvert.readthedocs.io/en/latest/usage.html#slideswithnotesexample">SlidesWithNotesExample</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to designate a mapping from notebook cells to Reveal.js slides,
+from within the Jupyter notebook, select menu item
+View –&gt; Cell Toolbar –&gt; Slideshow. That will reveal a drop-down menu
+on the upper-right of each cell.  From it, one may choose from
+“Slide,” “Sub-Slide”, “Fragment”, “Skip”, and “Notes.”  On conversion,
+cells designated as “skip” will not be included, “notes” will be included
+only in presenter notes, etc.</p>
+</div>
+<div class="section" id="example-creating-slides-w-speaker-notes">
+<span id="slideswithnotesexample"></span><h4>Example: creating slides w/ speaker notes<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#example-creating-slides-w-speaker-notes" title="Permalink to this headline">¶</a></h4>
+<p>Let’s suppose you have a notebook <code class="docutils literal notranslate"><span class="pre">your_talk.ipynb</span></code> that you want to convert
+to slides. For this example, we’ll assume that you are working in the same
+directory as the notebook you want to convert (i.e., when you run <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">.</span></code>,
+<code class="docutils literal notranslate"><span class="pre">your_talk.ipynb</span></code> shows up amongst the list of files).</p>
+<p>First, we need a copy of reveal.js in the same directory as your slides. One
+way to do this is to use the following commands in your terminal:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/hakimel/reveal.js.git
+<span class="nb">cd</span> reveal.js
+git checkout <span class="m">3</span>.5.0
+<span class="nb">cd</span> ..
+</pre></div>
+</div>
+<p>Then we need to tell nbconvert to point to this local copy. To do that we use
+the <code class="docutils literal notranslate"><span class="pre">--reveal-prefix</span></code> command line flag to point to the local copy.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>jupyter nbconvert your_talk.ipynb --to slides --reveal-prefix reveal.js
+</pre></div>
+</div>
+<p>This will create file <code class="docutils literal notranslate"><span class="pre">your_talk.slides.html</span></code>, which you should be able to
+access with <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">your_talk.slides.html</span></code>. To access the speaker notes, press
+<code class="docutils literal notranslate"><span class="pre">s</span></code> after the slides load and they should open in a new window.</p>
+<p>Note: This does not enable slides that run completely offline. While you have a
+local copy of reveal.js, by default, the slides need to access mathjax, require,
+and jquery via a public CDN. Addressing this use case is an open issue and <a class="reference external" href="https://github.com/jupyter/nbconvert/pulls">PRs</a> are always encouraged.</p>
+</div>
+<div class="section" id="serving-slides-with-an-https-server-post-serve">
+<span id="servepostprocessorexample"></span><h4>Serving slides with an https server: <code class="docutils literal notranslate"><span class="pre">--post</span> <span class="pre">serve</span></code><a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#serving-slides-with-an-https-server-post-serve" title="Permalink to this headline">¶</a></h4>
+<p>Once you have speaker notes working you may notice that your timers don’t work.
+Timers require a bit more infrastructure; you need to serve your local copy of
+reveal.js from a local https server.</p>
+<p>Fortunately, <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> makes this fairly straightforward through the use of
+the <code class="docutils literal notranslate"><span class="pre">ServePostProcessor</span></code>. To activate this server, we append the command line
+flag <code class="docutils literal notranslate"><span class="pre">--post</span> <span class="pre">serve</span></code> to our call to nbconvert.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>jupyter nbconvert your_talk.ipynb --to slides --reveal-prefix reveal.js --post serve
+</pre></div>
+</div>
+<p>This will run the server, which will occupy the terminal that you ran the
+command in until you stop it. You can stop the server by pressing <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">C</span></code>
+twice.</p>
+</div>
+</div>
+<div class="section" id="markdown">
+<span id="convert-markdown"></span><h3>Markdown<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#markdown" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">markdown</span></code></p>
+<p>Simple markdown output.  Markdown cells are unaffected,
+and code cells indented 4 spaces.
+Images are output as .png files in a folder.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="ascii">
+<span id="convert-ascii"></span><h3>Ascii<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#ascii" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">asciidoc</span></code></p>
+<p>Ascii output.
+Images are output as .png files in a folder.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="restructuredtext">
+<span id="convert-rst"></span><h3>reStructuredText<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#restructuredtext" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">rst</span></code></p>
+<p>Basic reStructuredText output. Useful as a starting point for embedding
+notebooks in Sphinx docs.
+Images are output as .png files in a folder.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>nbconvert uses <a class="reference external" href="http://pandoc.org/">pandoc</a> to convert between various markup languages,
+so pandoc is a dependency when converting to LaTeX or reStructuredText.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="executable-script">
+<span id="convert-script"></span><h3>Executable script<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#executable-script" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">script</span></code></p>
+<p>Convert a notebook to an executable script.
+This is the simplest way to get a Python (or other language, depending on
+the kernel) script out of a notebook. If there were any magics in an
+Jupyter notebook, this may only be executable from a Jupyter session.</p>
+<p>For example, to convert a Julia notebook to a Julia executable script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">script</span> <span class="n">my_julia_notebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="notebook-and-preprocessors">
+<span id="convert-notebook"></span><h3>Notebook and preprocessors<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#notebook-and-preprocessors" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">notebook</span></code></p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.0.</span></p>
+</div>
+<p>This doesn’t convert a notebook to a different format <em>per se</em>,
+instead it allows the running of nbconvert preprocessors on a notebook,
+and/or conversion to other notebook formats. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">execute</span> <span class="n">mynotebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>This will open the notebook, execute it, capture new output, and save the
+result in <code class="file docutils literal notranslate"><span class="pre">mynotebook.nbconvert.ipynb</span></code>. Specifying <code class="docutils literal notranslate"><span class="pre">--inplace</span></code> will
+overwrite the input file instead of writing a new file. By default,
+<code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> will abort conversion if any exceptions occur during
+execution of a cell. If you specify <code class="docutils literal notranslate"><span class="pre">--allow-errors</span></code> (in addition to the
+<cite>–execute`</cite> flag) then conversion will continue and the output from any
+exception will be included in the cell output.</p>
+<p>The following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">nbformat</span> <span class="mi">3</span> <span class="n">mynotebook</span>
+</pre></div>
+</div>
+<p>will create a copy of <code class="file docutils literal notranslate"><span class="pre">mynotebook.ipynb</span></code> in <code class="file docutils literal notranslate"><span class="pre">mynotebook.v3.ipynb</span></code>
+in version 3 of the notebook format.</p>
+<p>If you want to convert a notebook in-place, you can specify the output file
+to be the same as the input file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">notebook</span> <span class="n">mynb</span> <span class="o">--</span><span class="n">output</span> <span class="n">mynb</span>
+</pre></div>
+</div>
+<p>Be careful with that, since it will replace the input file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>nbconvert uses <a class="reference external" href="http://pandoc.org/">pandoc</a> to convert between various markup languages,
+so pandoc is a dependency when converting to latex or reStructuredText.</p>
+</div>
+<p>The output file created by <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> will have the same base name as
+the notebook and will be placed in the current working directory. Any
+supporting files (graphics, etc) will be placed in a new directory with the
+same base name as the notebook, suffixed with <code class="docutils literal notranslate"><span class="pre">_files</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert notebook.ipynb
+$ ls
+notebook.ipynb   notebook.html    notebook_files/
+</pre></div>
+</div>
+<p>For simple single-file output, such as html, markdown, etc.,
+the output may be sent to standard output with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert --to markdown notebook.ipynb --stdout
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="converting-multiple-notebooks">
+<h2>Converting multiple notebooks<a class="headerlink" href="https://nbconvert.readthedocs.io/en/latest/usage.html#converting-multiple-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Multiple notebooks can be specified from the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert notebook*.ipynb
+$ jupyter nbconvert notebook1.ipynb notebook2.ipynb
+</pre></div>
+</div>
+<p>or via a list in a configuration file, say <code class="docutils literal notranslate"><span class="pre">mycfg.py</span></code>, containing the text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">NbConvertApp</span><span class="o">.</span><span class="n">notebooks</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"notebook1.ipynb"</span><span class="p">,</span> <span class="s2">"notebook2.ipynb"</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>and using the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter nbconvert --config mycfg.py
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://nbconvert.readthedocs.io/en/latest/nbconvert_library.html" class="btn btn-neutral float-right" title="Using nbconvert as a library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://nbconvert.readthedocs.io/en/latest/install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr><div><div id="rtd-1x66ybck" class="ethical-rtd"></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2015-2019, Jupyter Development Team
+      
+        <span class="commit">
+          Revision <code>cda5ec4b</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="https://nbconvert.readthedocs.io/en/latest/usage.html">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/stable/usage.html">stable</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.6.0/usage.html">5.6.0</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.5.0/usage.html">5.5.0</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.4/usage.html">5.4</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.3.1/usage.html">5.3.1</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.3.0/usage.html">5.3.0</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.2.1/usage.html">5.2.1</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.1.1/usage.html">5.1.1</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.1/usage.html">5.1</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/5.0.0/usage.html">5.0.0</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/4.3.0/usage.html">4.3.0</a></dd>
+        
+        
+        
+        <dd><a href="https://nbconvert.readthedocs.io/en/4.2.0/usage.html">4.2.0</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://readthedocs.org/projects/nbconvert/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/nbconvert/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/nbconvert/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/nbconvert/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/nbconvert/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/nbconvert/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/jupyter/nbconvert/blob/master/docs/source/usage.rst">View</a>
+        </dd>
+        
+        <dd>
+          <a href="https://github.com/jupyter/nbconvert/edit/master/docs/source/usage.rst">Edit</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/nbconvert/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+
+<div id="rtd-s96f0cyy"></div></body></html>
